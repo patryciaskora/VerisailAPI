@@ -1,6 +1,5 @@
 const Boat = require("../models/boats.model.js");
 
-// Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
     Boat.getAll((err, data) => {
       if (err)

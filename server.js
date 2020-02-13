@@ -1,3 +1,4 @@
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -14,9 +15,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Verisail application." });
 });
 
-require("./app/routes/boat.routes.js")(app);
+require("./app/routes/boat.route")(app);
 
 // set port, listen for requests
 app.listen(8080, () => {
   console.log("Server is running on port 8080.");
 });
+

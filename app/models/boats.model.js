@@ -14,8 +14,9 @@ Boat.getAll = result => {
         result(null, err);
         return;
       }
-  
       console.log("boats: ", res);
       result(null, res);
     });
   };
+
+  module.exports = Boat;
