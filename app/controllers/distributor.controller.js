@@ -1,11 +1,11 @@
-const Manufacturer = require("../models/manufacturer.model");
+const Distributor = require("../models/distributor.model");
 
 exports.findAll = (req, res) => {
-    Manufacturer.getAll((err, data) => {
+    Distributor.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving manufacturers."
+            err.message || "Some error occurred while retrieving distributors."
         });
       else res.send(data);
     });
@@ -19,9 +19,9 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Manufacturer
-  const manufacturer = new Manufacturer({
-    manufacturerID: req.body.manufacturerID,
+  // Create a Distributor
+  const distributor = new Distributor({
+    distributorID: req.body.distributorID,
     name: req.body.name,
     street: req.body.street,
     city: req.body.city,
@@ -29,27 +29,27 @@ exports.create = (req, res) => {
     zip: req.body.zip
   });
   
-  // Save Manufacturer in the database
-  Manufacturer.create(manufacturer, (err, data) => {
+  // Save Distributor in the database
+  Distributor.create(distributor, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Manufacturer."
+          err.message || "Some error occurred while creating the Distributor."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Manufacturer.findById(req.params.manufacturerID, (err, data) => {
+  Distributor.findById(req.params.distributorID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+          message: `Not found Distributor with id ${req.params.distrubtorID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Manufacturer with id " + req.params.Manufacturer
+          message: "Error retrieving Distributor with id " + req.params.Distributor
         });
       }
     } else res.send(data);
@@ -64,18 +64,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Manufacturer.updateById(
-    req.params.manufacturerID,
-    new Manufacturer(req.body),
+  Distributor.updateById(
+    req.params.distributorID,
+    new Distributor(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+            message: `Not found Distributor with id ${req.params.distributorID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating manufacturer with id " + req.params.manufacturerID
+            message: "Error updating Distributor with id " + req.params.distributorID
           });
         }
       } else res.send(data);
@@ -84,17 +84,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Manufacturer.remove(req.params.manufacturerID, (err, data) => {
+  Distributor.remove(req.params.distributorID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+          message: `Not found Distributor with id ${req.params.distributorID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete manufacturer with id " + req.params.manufacturerID
+          message: "Could not delete distributor with id " + req.params.distributorID
         });
       }
-    } else res.send({ message: `Manufacturer was deleted successfully!` });
+    } else res.send({ message: `Distributor was deleted successfully!` });
   });
 };

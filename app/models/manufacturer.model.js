@@ -68,8 +68,8 @@ Manufacturer.getAll = result => {
           return;
         }
   
-        console.log("updated manufacturer: ", { id: id, ...event });
-        result(null, { id: id, ...event});
+        console.log("updated manufacturer: ", { id: id, ...manufacturer });
+        result(null, { id: id, ...manufacturer});
       }
     );
   };
