@@ -21,11 +21,11 @@ exports.create = (req, res) => {
   
   // Create a Boat Owner
   const boatOwner = new boatOwner({
-    ownerID = req.body.ownerID,
-    fName = req.body.fName,
-    lName = req.body.lName,
-    phone = req.body.phone,
-    email = req.body.email
+    ownerID: req.body.ownerID,
+    fName: req.body.fName,
+    lName: req.body.lName,
+    phone: req.body.phone,
+    email: req.body.email
   });
   
   // Save Event in the database
