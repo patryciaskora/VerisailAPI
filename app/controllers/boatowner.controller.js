@@ -1,11 +1,11 @@
-const Boat = require("../models/boats.model.js");
+const BoatOwner = require("../models/boatowner.model");
 
 exports.findAll = (req, res) => {
-    Boat.getAll((err, data) => {
+    BoatOwner.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving customers."
+            err.message || "Some error occurred while retrieving boat owners."
         });
       else res.send(data);
     });
@@ -19,35 +19,36 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Boat
-  const boat = new Boat({
-    boatID: req.body.boatID,
-    boatName: req.body.boatName,
-    phone: req.body.phone,
-    countryOfOrigin: req.boat.countryOfOrigin
+  // Create a Boat Owner
+  const boatOwner = new boatOwner({
+    ownerID = req.body.ownerID,
+    fName = req.body.fName,
+    lName = req.body.lName,
+    phone = req.body.phone,
+    email = req.body.email
   });
   
-  // Save Boat in the database
-  Boat.create(boat, (err, data) => {
+  // Save Event in the database
+  BoatOwner.create(owner, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Boat."
+          err.message || "Some error occurred while creating the Boat Owner."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Boat.findById(req.params.boatID, (err, data) => {
+  BoatOwner.findById(req.params.ownerID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found Boat Owner with id ${req.params.ownerID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Boat with id " + req.params.Boat
+          message: "Error retrieving Boat Owner with id " + req.params.BoatOwner
         });
       }
     } else res.send(data);
@@ -62,18 +63,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Boat.updateById(
-    req.params.boatID,
-    new Boat(req.body),
+  BoatOwner.updateById(
+    req.params.ownerID,
+    new BoatOwner(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Boat with id ${req.params.boatID}.`
+            message: `Not found Boat Owner with id ${req.params.ownerID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Boat with id " + req.params.boatID
+            message: "Error updating Boat Owner with id " + req.params.ownerID
           });
         }
       } else res.send(data);
@@ -82,17 +83,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boat.remove(req.params.boatID, (err, data) => {
+  BoatOwner.remove(req.params.ownerID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found Boat Owner with id ${req.params.ownerID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Boat with id " + req.params.boatID
+          message: "Could not delete Boat Owner with id " + req.params.ownerID
         });
       }
-    } else res.send({ message: `Boat was deleted successfully!` });
+    } else res.send({ message: `Boat Owner was deleted successfully!` });
   });
 };

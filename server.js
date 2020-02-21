@@ -16,6 +16,8 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/boat.route")(app);
+require("./app/routes/event.route")(app);
+require("./app/routes/manufacturer.route")(app);
 
 // set port, listen for requests
 app.listen(8080, () => {

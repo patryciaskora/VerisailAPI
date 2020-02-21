@@ -1,11 +1,11 @@
-const Boat = require("../models/boats.model.js");
+const Event = require("../models/events.model.js");
 
 exports.findAll = (req, res) => {
-    Boat.getAll((err, data) => {
+    Event.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving customers."
+            err.message || "Some error occurred while retrieving events."
         });
       else res.send(data);
     });
@@ -19,35 +19,39 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Boat
-  const boat = new Boat({
-    boatID: req.body.boatID,
-    boatName: req.body.boatName,
-    phone: req.body.phone,
-    countryOfOrigin: req.boat.countryOfOrigin
+  // Create a Event
+  const event = new Event({
+    eventID: req.body.eventID,
+    name: req.body.name,
+    dateTime: req.body.dateTime,
+    city: req.body.city,
+    state: req.boat.state,
+    GPS_lat: req.boat.GPS_lat,
+    GPS_long: req.body.GPS_long
+
   });
   
-  // Save Boat in the database
-  Boat.create(boat, (err, data) => {
+  // Save Event in the database
+  Event.create(event, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Boat."
+          err.message || "Some error occurred while creating the Event."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Boat.findById(req.params.boatID, (err, data) => {
+  Event.findById(req.params.eventID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found Event with id ${req.params.eventID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Boat with id " + req.params.Boat
+          message: "Error retrieving Event with id " + req.params.Event
         });
       }
     } else res.send(data);
@@ -62,18 +66,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Boat.updateById(
-    req.params.boatID,
-    new Boat(req.body),
+  Event.updateById(
+    req.params.eventID,
+    new Event(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Boat with id ${req.params.boatID}.`
+            message: `Not found Event with id ${req.params.eventID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Boat with id " + req.params.boatID
+            message: "Error updating event with id " + req.params.eventID
           });
         }
       } else res.send(data);
@@ -82,17 +86,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boat.remove(req.params.boatID, (err, data) => {
+  Event.remove(req.params.eventID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found Event with id ${req.params.eventID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Boat with id " + req.params.boatID
+          message: "Could not delete event with id " + req.params.eventID
         });
       }
-    } else res.send({ message: `Boat was deleted successfully!` });
+    } else res.send({ message: `Event was deleted successfully!` });
   });
 };
