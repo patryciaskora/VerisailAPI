@@ -25,8 +25,8 @@ exports.create = (req, res) => {
     name: req.body.name,
     dateTime: req.body.dateTime,
     city: req.body.city,
-    state: req.boat.state,
-    GPS_lat: req.boat.GPS_lat,
+    state: req.body.state,
+    GPS_lat: req.body.GPS_lat,
     GPS_long: req.body.GPS_long
 
   });

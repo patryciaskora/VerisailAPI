@@ -2,11 +2,11 @@ const sql = require("./db.js");
 
 const Distributor = function(distributor){
     this.distributorID = distributorID
-    this.name = name
-    this.street = street
-    this.city = city
-    this.state = state
-    this.zip = zip
+    this.name = distributor.name
+    this.street = distributor.street
+    this.city = distributor.city
+    this.state = distributor.state
+    this.zip = distributor.zip
 }
 
 Distributor.create = (newDistributor, result) => {

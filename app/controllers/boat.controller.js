@@ -24,7 +24,7 @@ exports.create = (req, res) => {
     boatID: req.body.boatID,
     boatName: req.body.boatName,
     phone: req.body.phone,
-    countryOfOrigin: req.boat.countryOfOrigin
+    countryOfOrigin: req.body.countryOfOrigin
   });
   
   // Save Boat in the database

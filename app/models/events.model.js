@@ -1,13 +1,13 @@
 const sql = require("./db.js");
 
 const Event = function(event){
-    this.name = name
-    this.city = city
-    this.state = state
-    this.dateTime = dateTime
-    this.GPS_lat = GPS_lat
-    this.GPS_long = GPS_long
-    this.eventID = eventID
+    this.name = event.name
+    this.city = event.city
+    this.state = event.state
+    this.dateTime = event.dateTime
+    this.GPS_lat = event.GPS_lat
+    this.GPS_long = event.GPS_long
+    this.eventID = event.eventID
 }
 
 Event.create = (newEvent, result) => {

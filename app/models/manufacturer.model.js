@@ -1,12 +1,12 @@
 const sql = require("./db.js");
 
 const Manufacturer = function(manufacturer){
-    this.manufacturerID = manufacturerID
-    this.name = name
-    this.street = street
-    this.city = city
-    this.state = state
-    this.zip = zip
+    this.manufacturerID = manufacturer.manufacturerID
+    this.name = manufacturer.name
+    this.street = manufacturer.street
+    this.city = manufacturer.city
+    this.state = manufacturer.state
+    this.zip = manufacturer.zip
 }
 
 Manufacturer.create = (newManufacturer, result) => {

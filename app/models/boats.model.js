@@ -1,10 +1,10 @@
 const sql = require("./db.js");
 
 const Boat = function(boat){
-    this.boatID = boatID
-    this.boatName = boatName
-    this.phone = phone
-    this.countryOfOrigin = countryOfOrigin
+    this.boatID = boat.boatID
+    this.boatName = boat.boatName
+    this.phone = boat.phone
+    this.countryOfOrigin = boat.countryOfOrigin
 }
 
 Boat.create = (newBoat, result) => {

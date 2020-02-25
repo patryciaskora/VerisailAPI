@@ -1,11 +1,11 @@
 const sql = require("./db.js");
 
 const BoatOwner = function(boatowner){
-    this.ownerID = ownerID
-    this.fName = fName
-    this.lName = lName
-    this.phone = phone
-    this.email = email
+    this.ownerID = boatowner.ownerID
+    this.fName = boatowner.fName
+    this.lName = boatowner.lName
+    this.phone = boatowner.phone
+    this.email = boatowner.email
 }
 
 BoatOwner.create = (newBoatOwner, result) => {

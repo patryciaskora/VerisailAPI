@@ -25,7 +25,7 @@ exports.create = (req, res) => {
     name: req.body.name,
     street: req.body.street,
     city: req.body.city,
-    state: req.boat.state,
+    state: req.body.state,
     zip: req.body.zip
   });
   
