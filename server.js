@@ -20,6 +20,7 @@ require("./app/routes/event.route")(app);
 require("./app/routes/manufacturer.route")(app);
 require("./app/routes/boatowner.route")(app);
 require("./app/routes/distributor.route")(app);
+require("./app/routes/event_registration.route")(app);
 
 // set port, listen for requests
 app.listen(8080, () => {
