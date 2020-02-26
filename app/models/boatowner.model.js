@@ -21,7 +21,7 @@ BoatOwner.create = (newBoatOwner, result) => {
 };
 
 BoatOwner.findById = (ownerID, result) => {
-  sql.query(`SELECT * FROM boat_owner WHERE ownerID = ${ownerID}`, (err, res) => {
+  sql.query(`SELECT * FROM boat_owners WHERE ownerID = ${ownerID}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -52,7 +52,7 @@ BoatOwner.getAll = result => {
 
  BoatOwner.updateById = (id, boatowner, result) => {
     sql.query(
-      "UPDATE boat_owners SET fName = ?, lName = ?, phone = ?, email = ?, WHERE ownerID = ?",
+      "UPDATE boat_owners SET fName = ?, lName = ?, phone = ?, email = ? WHERE ownerID = ?",
       [boatowner.fName, boatowner.lName, boatowner.phone, boatowner.email, id],
       (err, res) => {
         if (err) {

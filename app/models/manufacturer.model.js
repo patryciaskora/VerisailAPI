@@ -53,7 +53,7 @@ Manufacturer.getAll = result => {
 
  Manufacturer.updateById = (id, manufacturer, result) => {
     sql.query(
-      "UPDATE manufacturers SET name = ?, street = ?, street = ?, city = ?, state = ?, zip = ?, WHERE manufacturerID = ?",
+      "UPDATE manufacturers SET name = ?, street = ?, city = ?, state = ?, zip = ? WHERE manufacturerID = ?",
       [manufacturer.name, manufacturer.street, manufacturer.city, manufacturer.state, manufacturer.zip, id],
       (err, res) => {
         if (err) {

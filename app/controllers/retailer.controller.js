@@ -1,11 +1,11 @@
-const Manufacturer = require("../models/manufacturer.model");
+const Retailer = require("../models/retailer.model");
 
 exports.findAll = (req, res) => {
-    Manufacturer.getAll((err, data) => {
+    Retailer.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving manufacturers."
+            err.message || "Some error occurred while retrieving retailers."
         });
       else res.send(data);
     });
@@ -19,9 +19,9 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Manufacturer
-  const manufacturer = new Manufacturer({
-    manufacturerID: req.body.manufacturerID,
+  // Create a Retailer
+  const retailer = new Retailer({
+    retailID: req.body.retailID,
     name: req.body.name,
     street: req.body.street,
     city: req.body.city,
@@ -29,27 +29,27 @@ exports.create = (req, res) => {
     zip: req.body.zip
   });
   
-  // Save Manufacturer in the database
-  Manufacturer.create(manufacturer, (err, data) => {
+  // Save Retailer in the database
+  Retailer.create(retailer, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Manufacturer."
+          err.message || "Some error occurred while creating the Retailer."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Manufacturer.findById(req.params.manufacturerID, (err, data) => {
+  Retailer.findById(req.params.retailID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+          message: `Not found Retailer with id ${req.params.retailID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Manufacturer with id " + req.params.manufacturerID
+          message: "Error retrieving Retailer with id " + req.params.retailID
         });
       }
     } else res.send(data);
@@ -64,18 +64,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Manufacturer.updateById(
-    req.params.manufacturerID,
-    new Manufacturer(req.body),
+  Retailer.updateById(
+    req.params.retailID,
+    new Retailer(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+            message: `Not found Retailer with id ${req.params.retailID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating manufacturer with id " + req.params.manufacturerID
+            message: "Error updating retailer with id " + req.params.retailID
           });
         }
       } else res.send(data);
@@ -84,17 +84,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Manufacturer.remove(req.params.manufacturerID, (err, data) => {
+  Retailer.remove(req.params.retailID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Manufacturer with id ${req.params.manufacturerID}.`
+          message: `Not found Retailer with id ${req.params.retailID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete manufacturer with id " + req.params.manufacturerID
+          message: "Could not delete Retailer with id " + req.params.retailID
         });
       }
-    } else res.send({ message: `Manufacturer was deleted successfully!` });
+    } else res.send({ message: `Retailer was deleted successfully!` });
   });
 };

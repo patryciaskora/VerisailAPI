@@ -54,7 +54,7 @@ Event.getAll = result => {
 
  Event.updateById = (id, event, result) => {
     sql.query(
-      "UPDATE events SET GPS_long = ?, GPS_lat = ?, name = ?, dateTime = ?, city = ?, state = ?, WHERE eventID = ?",
+      "UPDATE events SET GPS_long = ?, GPS_lat = ?, name = ?, dateTime = ?, city = ?, state = ? WHERE eventID = ?",
       [event.GPS_long, event.GPS_lat, event.name, event.dateTime, event.city, event.state, id],
       (err, res) => {
         if (err) {

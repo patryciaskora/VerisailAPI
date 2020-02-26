@@ -33,7 +33,7 @@ eventRegistration.findById = (registrationID, result) => {
       return;
     }
 
-    // not found Distributor with the id
+    // not found registration with the id
     result({ kind: "not_found" }, null);
   });
 };
@@ -67,8 +67,8 @@ eventRegistration.getAll = result => {
           return;
         }
   
-        console.log("updated distributor: ", { id: id, ...distributor });
-        result(null, { id: id, ...distributor});
+        console.log("updated event registration: ", { id: id, ...registration });
+        result(null, { id: id, ...registration});
       }
     );
   };

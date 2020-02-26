@@ -2,17 +2,17 @@ module.exports = app => {
     const registration = require("../controllers/event_registration.controller");
 
     // Create a new registration
-    app.post("/newregistration", distributor.create);
+    app.post("/newregistration", registration.create);
 
-    // Retrieve all Distributors
-    app.get("/distributors", distributor.findAll);
+    // Retrieve all Registrations
+    app.get("/registrations", registration.findAll);
 
-    // Retrieve a single Distributor with distributorID
-    app.get("/distributors/:distributorID", distributor.findOne);
+    // Retrieve a single Registration with registrationID
+    app.get("/registrations/:registrationID", registration.findOne);
 
-    // Update a Distributor with distributorID
-    app.put("/distributorupdate/:distributorID", distributor.update);
+    // Update a Regristration with registrationID
+    app.put("/registrationupdate/:registrationID", registration.update);
 
-    //Delete a Distributor with an ID
-    app.delete('/deletedistributor/:distributorID', distributor.delete);
+    //Delete a Registration with an ID
+    app.delete('/deleteregistration/:registrationID', registration.delete);
 }

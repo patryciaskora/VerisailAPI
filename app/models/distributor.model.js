@@ -53,7 +53,7 @@ Distributor.getAll = result => {
 
  Distributor.updateById = (id, distributor, result) => {
     sql.query(
-      "UPDATE distributors SET name = ?, street = ?, street = ?, city = ?, state = ?, zip = ?, WHERE manufacturerID = ?",
+      "UPDATE distributors SET name = ?, street = ?, street = ?, city = ?, state = ?, zip = ? WHERE manufacturerID = ?",
       [distributor.name, distributor.street, distributor.city, distributor.state, distributor.zip, id],
       (err, res) => {
         if (err) {
