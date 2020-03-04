@@ -2,11 +2,12 @@ const sql = require("./db.js");
 
 const Retailer = function(retailer){
     this.retailID = retailer.retailID
-    this.name = retailer.name
+    this.retailName = retailer.retailName
     this.street = retailer.street
     this.city = retailer.city
     this.state = retailer.state
     this.zip = retailer.zip
+    this.userID = retailer.userID
 }
 
 Retailer.create = (newRetailer, result) => {
@@ -53,8 +54,8 @@ Retailer.getAll = result => {
 
  Retailer.updateById = (id, retailer, result) => {
     sql.query(
-      "UPDATE retailers SET name = ?, street = ?, city = ?, state = ?, zip = ? WHERE retailID = ?",
-      [retailer.name, retailer.street, retailer.city, retailer.state, retailer.zip, id],
+      "UPDATE retailers SET retailName = ?, street = ?, city = ?, state = ?, zip = ?, userID = ? WHERE retailID = ?",
+      [retailer.retailName, retailer.street, retailer.city, retailer.state, retailer.zip, retailer.userID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

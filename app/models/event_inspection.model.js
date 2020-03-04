@@ -2,7 +2,8 @@ const sql = require("./db.js");
 
 const Inspection = function(inspection){
     this.inspectionID = inspection.inspectionID
-    this.dateTime = inspection.dateTime
+    this.insp_time = inspection.insp_time
+    this.insp_date = inspection.insp_date
     this.GPS_lat = inspection.GPS_lat
     this.GPS_long = inspection.GPS_long
     this.verifiedStatus = inspection.verifiedStatus
@@ -53,8 +54,8 @@ Inspection.getAll = result => {
 
  Inspection.updateById = (id, inspection, result) => {
     sql.query(
-      "UPDATE event_inspections SET GPS_long = ?, GPS_lat = ?, dateTime = ?, eventID = ?, verifiedStatus = ? WHERE inspectionID = ?",
-      [inspection.GPS_long, inspection.GPS_lat, inspection.dateTime, inspection.eventID, inspection.verifiedStatus, id],
+      "UPDATE event_inspections SET GPS_long = ?, GPS_lat = ?, insp_time = ?, insp_date = ?, eventID = ?, verifiedStatus = ? WHERE inspectionID = ?",
+      [inspection.GPS_long, inspection.GPS_lat, inspection.insp_time, inspection.insp_date, inspection.eventID, inspection.verifiedStatus, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

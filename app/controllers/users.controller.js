@@ -1,11 +1,11 @@
-const Boat = require("../models/boats.model.js");
+const User = require("../models/users.model.js");
 
 exports.findAll = (req, res) => {
-    Boat.getAll((err, data) => {
+    User.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving boats."
+            err.message || "Some error occurred while retrieving users."
         });
       else res.send(data);
     });
@@ -19,36 +19,34 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Boat
-  const boat = new Boat({
-    boatID: req.body.boatID,
-    boatName: req.body.boatName,
-    phone: req.body.phone,
-    countryOfOrigin: req.body.countryOfOrigin,
-    ownerID: req.body.ownerID
+  // Create a User
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password,
+    userID: req.body.userID
   });
   
-  // Save Boat in the database
-  Boat.create(boat, (err, data) => {
+  // Save User in the database
+  User.create(boat, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Boat."
+          err.message || "Some error occurred while creating the User."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Boat.findById(req.params.boatID, (err, data) => {
+  User.findById(req.params.qrcode, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found User with id ${req.params.userID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Boat with id " + req.params.boatID
+          message: "Error retrieving user with id " + req.params.userID
         });
       }
     } else res.send(data);
@@ -63,18 +61,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Boat.updateById(
-    req.params.boatID,
-    new Boat(req.body),
+  User.updateById(
+    req.params.userID,
+    new User(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Boat with id ${req.params.boatID}.`
+            message: `Not found User with id ${req.params.userID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Boat with id " + req.params.boatID
+            message: "Error updating User with id " + req.params.userID
           });
         }
       } else res.send(data);
@@ -83,17 +81,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Boat.remove(req.params.boatID, (err, data) => {
+  User.remove(req.params.userID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Boat with id ${req.params.boatID}.`
+          message: `Not found User with id ${req.params.userID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Boat with id " + req.params.boatID
+          message: "Could not delete User with id " + req.params.userID
         });
       }
-    } else res.send({ message: `Boat was deleted successfully!` });
+    } else res.send({ message: `User was deleted successfully!` });
   });
 };

@@ -23,6 +23,7 @@ require("./app/routes/distributor.route")(app);
 require("./app/routes/event_registration.route")(app);
 require("./app/routes/retailer.route")(app);
 require("./app/routes/event_inspection.route")(app);
+require("./app/routes/label.route")(app);
 
 // set port, listen for requests
 app.listen(8080, () => {

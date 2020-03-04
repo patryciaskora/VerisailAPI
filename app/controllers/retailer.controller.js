@@ -22,11 +22,12 @@ exports.create = (req, res) => {
   // Create a Retailer
   const retailer = new Retailer({
     retailID: req.body.retailID,
-    name: req.body.name,
+    retailName: req.body.retailName,
     street: req.body.street,
     city: req.body.city,
     state: req.body.state,
-    zip: req.body.zip
+    zip: req.body.zip,
+    userID: req.body.userID
   });
   
   // Save Retailer in the database

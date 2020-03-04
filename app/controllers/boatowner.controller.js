@@ -25,7 +25,8 @@ exports.create = (req, res) => {
     fName: req.body.fName,
     lName: req.body.lName,
     phone: req.body.phone,
-    email: req.body.email
+    email: req.body.email,
+    userID: req.body.userID
   });
   
   // Save Event in the database

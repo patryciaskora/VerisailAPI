@@ -22,8 +22,9 @@ exports.create = (req, res) => {
   // Create a Event
   const event = new Event({
     eventID: req.body.eventID,
-    name: req.body.name,
-    dateTime: req.body.dateTime,
+    eventName: req.body.eventName,
+    event_date: req.body.event_date,
+    event_time: req.body.event_time,
     city: req.body.city,
     state: req.body.state,
     GPS_lat: req.body.GPS_lat,

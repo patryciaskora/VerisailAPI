@@ -22,11 +22,12 @@ exports.create = (req, res) => {
   // Create a Manufacturer
   const manufacturer = new Manufacturer({
     manufacturerID: req.body.manufacturerID,
-    name: req.body.name,
+    manuName: req.body.manuName,
     street: req.body.street,
     city: req.body.city,
     state: req.body.state,
-    zip: req.body.zip
+    zip: req.body.zip,
+    userID: req.body.userID
   });
   
   // Save Manufacturer in the database

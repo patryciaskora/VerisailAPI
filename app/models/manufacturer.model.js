@@ -2,11 +2,12 @@ const sql = require("./db.js");
 
 const Manufacturer = function(manufacturer){
     this.manufacturerID = manufacturer.manufacturerID
-    this.name = manufacturer.name
+    this.manuName = manufacturer.manuName
     this.street = manufacturer.street
     this.city = manufacturer.city
     this.state = manufacturer.state
     this.zip = manufacturer.zip
+    this.userID = manufacturer.userID
 }
 
 Manufacturer.create = (newManufacturer, result) => {
@@ -53,8 +54,8 @@ Manufacturer.getAll = result => {
 
  Manufacturer.updateById = (id, manufacturer, result) => {
     sql.query(
-      "UPDATE manufacturers SET name = ?, street = ?, city = ?, state = ?, zip = ? WHERE manufacturerID = ?",
-      [manufacturer.name, manufacturer.street, manufacturer.city, manufacturer.state, manufacturer.zip, id],
+      "UPDATE manufacturers SET manuName = ?, street = ?, city = ?, state = ?, zip = ?, userID = ? WHERE manufacturerID = ?",
+      [manufacturer.manuName, manufacturer.street, manufacturer.city, manufacturer.state, manufacturer.zip, manufacturer.userID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

@@ -1,17 +1,18 @@
 const sql = require("./db.js");
 
 const Event = function(event){
-    this.name = event.name
+    this.eventName = event.eventName
     this.city = event.city
     this.state = event.state
-    this.dateTime = event.dateTime
+    this.event_time = event.event_time
+    this.event_date = event.event_date
     this.GPS_lat = event.GPS_lat
     this.GPS_long = event.GPS_long
     this.eventID = event.eventID
 }
 
 Event.create = (newEvent, result) => {
-  sql.query("INSERT INTO events SET ?", newEvent, (err,res)=> {
+  sql.query("INSERT INTO ILCAevents SET ?", newEvent, (err,res)=> {
     if(err){
       console.log("error: ", err);
       result(err,null);
@@ -23,7 +24,7 @@ Event.create = (newEvent, result) => {
 };
 
 Event.findById = (eventID, result) => {
-  sql.query(`SELECT * FROM events WHERE eventID = ${eventID}`, (err, res) => {
+  sql.query(`SELECT * FROM ILCAevents WHERE eventID = ${eventID}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -41,7 +42,7 @@ Event.findById = (eventID, result) => {
 };
 
 Event.getAll = result => {
-    sql.query("SELECT * FROM events", (err, res) => {
+    sql.query("SELECT * FROM ILCAevents", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -54,8 +55,8 @@ Event.getAll = result => {
 
  Event.updateById = (id, event, result) => {
     sql.query(
-      "UPDATE events SET GPS_long = ?, GPS_lat = ?, name = ?, dateTime = ?, city = ?, state = ? WHERE eventID = ?",
-      [event.GPS_long, event.GPS_lat, event.name, event.dateTime, event.city, event.state, id],
+      "UPDATE ILCAevents SET GPS_long = ?, GPS_lat = ?, eventName = ?, event_date = ?, event_time = ?, city = ?, state = ? WHERE eventID = ?",
+      [event.GPS_long, event.GPS_lat, event.eventName, event.event_date, event.event_time, event.city, event.state, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);
@@ -76,7 +77,7 @@ Event.getAll = result => {
   };
   
   Event.remove = (id, result) => {
-    sql.query("DELETE FROM events WHERE eventID = ?", id, (err, res) => {
+    sql.query("DELETE FROM ILCAevents WHERE eventID = ?", id, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

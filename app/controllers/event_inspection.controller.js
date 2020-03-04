@@ -26,7 +26,8 @@ exports.create = (req, res) => {
     GPS_long: req.body.GPS_long,
     eventID: req.body.eventID,
     verifiedStatus: req.body.verifiedStatus,
-    dateTime: req.body.dateTime
+    insp_time: req.body.insp_time,
+    insp_date: req.body.insp_date
   });
   
   // Save Inspection in the database

@@ -5,6 +5,7 @@ const Boat = function(boat){
     this.boatName = boat.boatName
     this.phone = boat.phone
     this.countryOfOrigin = boat.countryOfOrigin
+    this.ownerID = boat.ownerID
 }
 
 Boat.create = (newBoat, result) => {
@@ -51,8 +52,8 @@ Boat.getAll = result => {
 
  Boat.updateById = (id, boat, result) => {
     sql.query(
-      "UPDATE boats SET countryOfOrigin = ?, boatName = ?, phone = ? WHERE boatID = ?",
-      [boat.countryOfOrigin, boat.boatName, boat.phone, id],
+      "UPDATE boats SET countryOfOrigin = ?, boatName = ?, phone = ?, ownerID = ? WHERE boatID = ?",
+      [boat.countryOfOrigin, boat.boatName, boat.phone, boat.ownerID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

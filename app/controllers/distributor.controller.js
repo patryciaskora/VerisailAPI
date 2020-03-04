@@ -22,11 +22,12 @@ exports.create = (req, res) => {
   // Create a Distributor
   const distributor = new Distributor({
     distributorID: req.body.distributorID,
-    name: req.body.name,
+    distName: req.body.distName,
     street: req.body.street,
     city: req.body.city,
     state: req.body.state,
-    zip: req.body.zip
+    zip: req.body.zip,
+    userID: req.body.userID
   });
   
   // Save Distributor in the database

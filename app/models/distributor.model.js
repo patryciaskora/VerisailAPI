@@ -2,11 +2,12 @@ const sql = require("./db.js");
 
 const Distributor = function(distributor){
     this.distributorID = distributorID
-    this.name = distributor.name
+    this.distName = distributor.distNname
     this.street = distributor.street
     this.city = distributor.city
     this.state = distributor.state
     this.zip = distributor.zip
+    this.userID = distributor.userID
 }
 
 Distributor.create = (newDistributor, result) => {
@@ -53,8 +54,8 @@ Distributor.getAll = result => {
 
  Distributor.updateById = (id, distributor, result) => {
     sql.query(
-      "UPDATE distributors SET name = ?, street = ?, street = ?, city = ?, state = ?, zip = ? WHERE manufacturerID = ?",
-      [distributor.name, distributor.street, distributor.city, distributor.state, distributor.zip, id],
+      "UPDATE distributors SET distName = ?, street = ?, street = ?, city = ?, state = ?, zip = ?, userID = ? WHERE manufacturerID = ?",
+      [distributor.distName, distributor.street, distributor.city, distributor.state, distributor.zip, distributor.userID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);
@@ -63,7 +64,7 @@ Distributor.getAll = result => {
         }
   
         if (res.affectedRows == 0) {
-          // not found Manufacturer with the id
+          // not found Distributor with the id
           result({ kind: "not_found" }, null);
           return;
         }
