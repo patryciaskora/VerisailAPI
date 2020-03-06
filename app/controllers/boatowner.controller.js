@@ -20,7 +20,7 @@ exports.create = (req, res) => {
   }
   
   // Create a Boat Owner
-  const boatOwner = new boatOwner({
+  const boatOwner = new BoatOwner({
     ownerID: req.body.ownerID,
     fName: req.body.fName,
     lName: req.body.lName,
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
   });
   
   // Save Event in the database
-  BoatOwner.create(owner, (err, data) => {
+  BoatOwner.create(boatOwner, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -49,7 +49,7 @@ exports.findOne = (req, res) => {
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Boat Owner with id " + req.params.BoatOwner
+          message: "Error retrieving Boat Owner with id " + req.params.ownerID
         });
       }
     } else res.send(data);

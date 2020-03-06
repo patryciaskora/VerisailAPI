@@ -88,7 +88,7 @@ Label.getAll = result => {
         return;
       }
   
-      console.log("deleted label with id: ", id);
+      console.log("deleted boat with id: ", id);
       result(null, res);
     });
   };

@@ -1,4 +1,4 @@
-const Label = require("../models/boats.model.js");
+const Label = require("../models/label.model.js");
 
 exports.findAll = (req, res) => {
     Label.getAll((err, data) => {
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
   const label = new Label({
     QRcode: req.body.QRcode,
     partID: req.body.partID,
-    current_owner: req.body.current_owner,
+    current_owner_id: req.body.current_owner_id,
     boatID: req.body.boatID,
     ownership_date: req.body.ownership_date,
     statusID: req.body.statusID

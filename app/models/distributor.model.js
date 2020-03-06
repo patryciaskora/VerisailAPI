@@ -1,8 +1,8 @@
 const sql = require("./db.js");
 
 const Distributor = function(distributor){
-    this.distributorID = distributorID
-    this.distName = distributor.distNname
+    this.distributorID = distributor.distributorID
+    this.distName = distributor.distName
     this.street = distributor.street
     this.city = distributor.city
     this.state = distributor.state
@@ -54,7 +54,7 @@ Distributor.getAll = result => {
 
  Distributor.updateById = (id, distributor, result) => {
     sql.query(
-      "UPDATE distributors SET distName = ?, street = ?, street = ?, city = ?, state = ?, zip = ?, userID = ? WHERE manufacturerID = ?",
+      "UPDATE distributors SET distName = ?, street = ?, city = ?, state = ?, zip = ?, userID = ? WHERE distributorID = ?",
       [distributor.distName, distributor.street, distributor.city, distributor.state, distributor.zip, distributor.userID, id],
       (err, res) => {
         if (err) {

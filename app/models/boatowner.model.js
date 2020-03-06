@@ -1,12 +1,12 @@
 const sql = require("./db.js");
 
-const BoatOwner = function(boatowner){
-    this.ownerID = boatowner.ownerID
-    this.fName = boatowner.fName
-    this.lName = boatowner.lName
-    this.phone = boatowner.phone
-    this.email = boatowner.email
-    this.userID = boatowner.userID
+const BoatOwner = function(boatOwner){
+    this.ownerID = boatOwner.ownerID
+    this.fName = boatOwner.fName
+    this.lName = boatOwner.lName
+    this.phone = boatOwner.phone
+    this.email = boatOwner.email
+    this.userID = boatOwner.userID
 }
 
 BoatOwner.create = (newBoatOwner, result) => {
@@ -51,10 +51,10 @@ BoatOwner.getAll = result => {
     });
   };
 
- BoatOwner.updateById = (id, boatowner, result) => {
+ BoatOwner.updateById = (id, boatOwner, result) => {
     sql.query(
       "UPDATE boat_owners SET fName = ?, lName = ?, phone = ?, email = ?, userID = ? WHERE ownerID = ?",
-      [boatowner.fName, boatowner.lName, boatowner.phone, boatowner.email, boatowner.userID, id],
+      [boatOwner.fName, boatOwner.lName, boatOwner.phone, boatOwner.email, boatOwner.userID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);
@@ -68,8 +68,8 @@ BoatOwner.getAll = result => {
           return;
         }
   
-        console.log("updated boat: ", { id: id, ...boatowner });
-        result(null, { id: id, ...boatowner});
+        console.log("updated boat: ", { id: id, ...boatOwner });
+        result(null, { id: id, ...boatOwner});
       }
     );
   };
