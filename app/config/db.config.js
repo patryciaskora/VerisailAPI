@@ -4,3 +4,4 @@ module.exports = {
     PASSWORD: "Tattoo88",
     DB: "mydb"
   };
+  

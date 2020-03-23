@@ -1,11 +1,22 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const app = express();
 
 // parse requests of content-type: application/json
 app.use(bodyParser.json());
+
+app.use(function(req,res, next) {
+  var allowedOrigins = ['http://localhost:4200', 'http://ec2-34-238-157-64.compute-1.amazonaws.com'];
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Meathods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  return next();
+})
 
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
