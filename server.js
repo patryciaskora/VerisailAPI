@@ -35,6 +35,8 @@ require("./app/routes/event_registration.route")(app);
 require("./app/routes/retailer.route")(app);
 require("./app/routes/event_inspection.route")(app);
 require("./app/routes/label.route")(app);
+require("./app/routes/users.route")(app);
+require("./app/routes/event_insp_details.route")(app);
 
 // set port, listen for requests
 app.listen(8080, () => {

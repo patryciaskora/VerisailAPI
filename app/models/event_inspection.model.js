@@ -1,13 +1,15 @@
 const sql = require("./db.js");
 
+//needs boat ID 
+//verifiedStatus is OVERALL status 
+//this is the node for event_registration in Firebase
 const Inspection = function(inspection){
     this.inspectionID = inspection.inspectionID
     this.insp_time = inspection.insp_time
     this.insp_date = inspection.insp_date
-    this.GPS_lat = inspection.GPS_lat
-    this.GPS_long = inspection.GPS_long
     this.verifiedStatus = inspection.verifiedStatus
     this.eventID = inspection.eventID
+    this.boatID = inspection.boatID
 }
 
 Inspection.create = (newInspection, result) => {
