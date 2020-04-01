@@ -28,6 +28,7 @@ exports.create = (req, res) => {
     insp_time: req.body.insp_time,
     partStatus: req.body.partStatue,
     qrDesc: req.body.qrDesc,
+    qrCode: req.body.qrCode,
     insp_by: req.body.insp_by,
     photoName: req.body.photoName,
     GPS_lat: req.body.GPS_lat,

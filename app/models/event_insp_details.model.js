@@ -8,6 +8,7 @@ const inspectionDetails = function(details){
     this.insp_time = details.insp_time
     this.partStatus = details.partStatus
     this.qrDesc = details.qrDesc
+    this.qrCode = details.qrCode
     this.insp_by = details.insp_by
     this.photoName = details.photoName
     this.GPS_lat = details.GPS_lat
@@ -58,8 +59,8 @@ inspectionDetails.getAll = result => {
 
  inspectionDetails.updateById = (id, detail, result) => {
     sql.query(
-      "UPDATE event_insp_details SET boatID = ?, eventID = ?, partStatus = ?, insp_by = ?, photoName = ?, GPS_lat = ?, GPS_long = ?, insp_date = ?, insp_time = ?, qrDesc = ? WHERE inspectionID = ?",
-      [detail.boatID, detail.eventID, detail.partStatus,detail.insp_by, detail.photoName, detail.GPS_lat, detail.GPS_long, detail.insp_date, detail.insp_time, detail.qrDesc, id],
+      "UPDATE event_insp_details SET boatID = ?, eventID = ?, qrCode = ?, partStatus = ?, insp_by = ?, photoName = ?, GPS_lat = ?, GPS_long = ?, insp_date = ?, insp_time = ?, qrDesc = ? WHERE inspectionID = ?",
+      [detail.boatID, detail.eventID, detail.qrCode, detail.partStatus,detail.insp_by, detail.photoName, detail.GPS_lat, detail.GPS_long, detail.insp_date, detail.insp_time, detail.qrDesc, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);
