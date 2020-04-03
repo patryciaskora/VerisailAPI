@@ -2,10 +2,11 @@ const sql = require("./db.js");
 
 const eventRegistration = function(registration){
     this.registrationID = registration.registrationID
-    this.dateTime = registration.dateTime
     this.hasBeenInsp = registration.hasBeenInsp
     this.eventID = registration.eventID
     this.boatID = registration.boatID
+    this.regDate = registration.regDate
+    this.regTime = registration.regTime
 }
 
 eventRegistration.create = (newRegistration, result) => {
@@ -52,8 +53,8 @@ eventRegistration.getAll = result => {
 
  eventRegistration.updateById = (id, registration, result) => {
     sql.query(
-      "UPDATE event_registrations SET dateTime = ?, boatID = ?, hasBeenInsp = ?, eventID = ? WHERE registrationID = ?",
-      [registration.dateTime, registration.boatID, registration.hasBeenInsp, registration.eventID, id],
+      "UPDATE event_registrations SET regDate = ?, regTime = ?, boatID = ?, hasBeenInsp = ?, eventID = ? WHERE registrationID = ?",
+      [registration.regDate, registration.regTime, registration.boatID, registration.hasBeenInsp, registration.eventID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

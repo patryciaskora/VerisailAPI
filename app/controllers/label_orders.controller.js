@@ -1,11 +1,11 @@
-const Label = require("../models/label_orders.model.js");
+const label_orders = require("../models/label_orders.model.js");
 
 exports.findAll = (req, res) => {
-    Label.getAll((err, data) => {
+    label_orders.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving labels."
+            err.message || "Some error occurred while retrieving label orders."
         });
       else res.send(data);
     });
@@ -19,37 +19,36 @@ exports.create = (req, res) => {
     });
   }
   
-  // Create a Boat
-  const label = new Label({
-    QRcode: req.body.QRcode,
-    partID: req.body.partID,
-    current_owner_id: req.body.current_owner_id,
-    boatID: req.body.boatID,
-    ownership_date: req.body.ownership_date,
-    statusID: req.body.statusID
+  // Create a label order
+  const labelOrder = new label_orders({
+    orderNum = req.body.orderNum,
+    email = req.body.email,
+    QR_begin = req.body.QR_begin,
+    QR_end = req.body.QR_end,
+    label_quantity = req.body.label_quantity
   });
   
-  // Save Label in the database
-  Label.create(label, (err, data) => {
+  // Save label order in the database
+  label_orders.create(labelOrder, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Label."
+          err.message || "Some error occurred while creating the label order."
       });
     else res.send(data);
   });
 };
 
 exports.findOne = (req, res) => {
-  Label.findById(req.params.QRcode, (err, data) => {
+  label_orders.findById(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Label with id ${req.params.QRcode}.`
+          message: `Not found label order with id ${req.params.orderNum}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Label with id " + req.params.QRcode
+          message: "Error retrieving label order with id " + req.params.orderNum
         });
       }
     } else res.send(data);
@@ -64,18 +63,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Label.updateById(
-    req.params.QRcode,
-    new Label(req.body),
+  label_orders.updateById(
+    req.params.orderNum,
+    new label_orders(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Label with id ${req.params.QRcode}.`
+            message: `Not found label order with id ${req.params.orderNum}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Label with id " + req.params.QRcode
+            message: "Error updating label order with id " + req.params.orderNum
           });
         }
       } else res.send(data);
@@ -84,17 +83,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Label.remove(req.params.QRcode, (err, data) => {
+  label_orders.remove(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Label with id ${req.params.QRcode}.`
+          message: `Not found label order with id ${req.params.orderNum}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Label with id " + req.params.QRcode
+          message: "Could not delete label order with id " + req.params.orderNum
         });
       }
-    } else res.send({ message: `Label was deleted successfully!` });
+    } else res.send({ message: `label order was deleted successfully!` });
   });
 };

@@ -42,15 +42,15 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Inspection.findById(req.params.retailID, (err, data) => {
+  Inspection.findById(req.params.inspectionID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Inspection with id ${req.params.retailID}.`
+          message: `Not found Inspection with id ${req.params.inspectionID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Inspection with id " + req.params.retailID
+          message: "Error retrieving Inspection with id " + req.params.inspectionID
         });
       }
     } else res.send(data);
@@ -66,17 +66,17 @@ exports.update = (req, res) => {
   }
   
   Inspection.updateById(
-    req.params.retailID,
+    req.params.inspectionID,
     new Inspection(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Inspection with id ${req.params.retailID}.`
+            message: `Not found Inspection with id ${req.params.inspectionID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating inspection with id " + req.params.retailID
+            message: "Error updating inspection with id " + req.params.inspectionID
           });
         }
       } else res.send(data);
@@ -85,15 +85,15 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Inspection.remove(req.params.retailID, (err, data) => {
+  Inspection.remove(req.params.inspectionID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Inspection with id ${req.params.retailID}.`
+          message: `Not found Inspection with id ${req.params.inspectionID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Inspection with id " + req.params.retailID
+          message: "Could not delete Inspection with id " + req.params.inspectionID
         });
       }
     } else res.send({ message: `Inspection was deleted successfully!` });
