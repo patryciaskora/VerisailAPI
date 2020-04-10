@@ -12,13 +12,11 @@ exports.findAll = (req, res) => {
   };
 
 exports.create = (req, res) => {
-  // Validate request
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
   }
-  
   // Create a Event
   const event = new Event({
     eventID: req.body.eventID,
@@ -29,9 +27,7 @@ exports.create = (req, res) => {
     state: req.body.state,
     GPS_lat: req.body.GPS_lat,
     GPS_long: req.body.GPS_long
-
   });
-  
   // Save Event in the database
   Event.create(event, (err, data) => {
     if (err)
