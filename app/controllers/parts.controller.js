@@ -27,11 +27,11 @@ exports.create = (req, res) => {
   });
   
   // Save Part in the database
-  Part.create(retailer, (err, data) => {
+  Part.create(part, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Retailer."
+          err.message || "Some error occurred while creating the Part."
       });
     else res.send(data);
   });
