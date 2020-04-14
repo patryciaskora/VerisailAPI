@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create an Event Registration
   const inspectionDetail = new inspectionDetails({
-    inspectionID: req.body.inspectionID,
     eventID: req.body.eventID,
     boatID: req.body.boatID,
     insp_date: req.body.insp_date,

@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create a Boat
   const boat = new Boat({
-    boatID: req.body.boatID,
     boatName: req.body.boatName,
     phone: req.body.phone,
     countryOfOrigin: req.body.countryOfOrigin,

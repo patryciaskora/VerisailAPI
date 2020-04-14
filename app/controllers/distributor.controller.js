@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create a Distributor
   const distributor = new Distributor({
-    distributorID: req.body.distributorID,
     distName: req.body.distName,
     street: req.body.street,
     city: req.body.city,

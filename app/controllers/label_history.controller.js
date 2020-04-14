@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create a label order
   const history = new label_history({
-    ID: req.body.ID,
     partID: req.body.partID,
     QRCode: req.body.QRCode,
     label_status_id: req.body.label_status_id,

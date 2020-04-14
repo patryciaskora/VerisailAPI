@@ -19,7 +19,6 @@ exports.create = (req, res) => {
   }
   // Create a Event
   const event = new Event({
-    eventID: req.body.eventID,
     eventName: req.body.eventName,
     event_date: req.body.event_date,
     event_time: req.body.event_time,

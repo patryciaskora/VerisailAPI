@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create a Manufacturer
   const manufacturer = new Manufacturer({
-    manufacturerID: req.body.manufacturerID,
     manuName: req.body.manuName,
     street: req.body.street,
     city: req.body.city,

@@ -1,7 +1,7 @@
-const Retailer = require("../models/retailer.model");
+const Part = require("../models/parts.model");
 
 exports.findAll = (req, res) => {
-    Retailer.getAll((err, data) => {
+    Part.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
@@ -20,17 +20,14 @@ exports.create = (req, res) => {
   }
   
   // Create a Retailer
-  const retailer = new Retailer({
-    retailName: req.body.retailName,
-    street: req.body.street,
-    city: req.body.city,
-    state: req.body.state,
-    zip: req.body.zip,
-    userID: req.body.userID
+  const part = new Part({
+    partType = req.body.partType,
+    partPrefix = req.body.partPrefix,
+    manufacturerID = req.body.manufacturerID
   });
   
-  // Save Retailer in the database
-  Retailer.create(retailer, (err, data) => {
+  // Save Part in the database
+  Part.create(retailer, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -41,15 +38,15 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Retailer.findById(req.params.retailID, (err, data) => {
+  Part.findById(req.params.partID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Retailer with id ${req.params.retailID}.`
+          message: `Not found Part with id ${req.params.partID}.`
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving Retailer with id " + req.params.retailID
+          message: "Error retrieving Part with id " + req.params.partID
         });
       }
     } else res.send(data);
@@ -64,18 +61,18 @@ exports.update = (req, res) => {
     });
   }
   
-  Retailer.updateById(
-    req.params.retailID,
-    new Retailer(req.body),
+  Part.updateById(
+    req.params.partID,
+    new Part(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Retailer with id ${req.params.retailID}.`
+            message: `Not found Part with id ${req.params.partID}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating retailer with id " + req.params.retailID
+            message: "Error updating part with id " + req.params.partID
           });
         }
       } else res.send(data);
@@ -84,17 +81,17 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Retailer.remove(req.params.retailID, (err, data) => {
+  Part.remove(req.params.partID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Retailer with id ${req.params.retailID}.`
+          message: `Not found Part with id ${req.params.partID}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Retailer with id " + req.params.retailID
+          message: "Could not delete Part with id " + req.params.partID
         });
       }
-    } else res.send({ message: `Retailer was deleted successfully!` });
+    } else res.send({ message: `Part was deleted successfully!` });
   });
 };

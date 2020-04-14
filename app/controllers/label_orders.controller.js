@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create a label order
   const labelOrder = new label_orders({
-    orderNum = req.body.orderNum,
     email = req.body.email,
     QR_begin = req.body.QR_begin,
     QR_end = req.body.QR_end,

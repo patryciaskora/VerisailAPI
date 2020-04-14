@@ -21,7 +21,6 @@ exports.create = (req, res) => {
   
   // Create an Event Registration
   const registration = new eventRegistration({
-    registrationID: req.body.registrationID,
     dateTime: req.body.dateTime,
     hasBeenInsp: req.body.hasBeenInsp,
     eventID: req.body.eventID,
