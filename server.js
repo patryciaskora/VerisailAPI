@@ -37,9 +37,10 @@ require("./app/routes/event_inspection.route")(app);
 require("./app/routes/label.route")(app);
 require("./app/routes/users.route")(app);
 require("./app/routes/event_insp_details.route")(app);
+require("./app/routes/parts.route")(app);
 
 // set port, listen for requests
-app.listen(8080, () => {
-  console.log("Server is running on port 8080.");
+app.listen(3000, () => {
+  console.log("Server is running on port 3000.");
 });
 
