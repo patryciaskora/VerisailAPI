@@ -4,6 +4,7 @@ const Part = function(part){
     this.partType = part.partType
     this.manufacturerID = part.manufacturerID
     this.partPrefix = part.partPrefix
+    this.partID = part.partID
 }
 
 Part.create = (newPart, result) => {

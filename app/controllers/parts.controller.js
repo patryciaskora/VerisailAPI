@@ -1,4 +1,4 @@
-const Part = require("../models/parts.model");
+const Part = require("../models/parts.models");
 
 exports.findAll = (req, res) => {
     Part.getAll((err, data) => {
@@ -21,9 +21,9 @@ exports.create = (req, res) => {
   
   // Create a Retailer
   const part = new Part({
-    partType = req.body.partType,
-    partPrefix = req.body.partPrefix,
-    manufacturerID = req.body.manufacturerID
+    partType: req.body.partType,
+    partPrefix: req.body.partPrefix,
+    manufacturerID: req.body.manufacturerID
   });
   
   // Save Part in the database
