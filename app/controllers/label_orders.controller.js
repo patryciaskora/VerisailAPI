@@ -21,14 +21,14 @@ exports.create = (req, res) => {
   
   // Create a label order
   const labelOrder = new label_orders({
-    email = req.body.email,
-    QR_begin = req.body.QR_begin,
-    QR_end = req.body.QR_end,
-    label_quantity = req.body.label_quantity
+    email: req.body.email,
+    QR_begin: req.body.QR_begin,
+    QR_end: req.body.QR_end,
+    label_quantity: req.body.label_quantity
   });
   
   // Save label order in the database
-  labelOrder.create(labelOrder, (err, data) => {
+  label_orders.create(labelOrder, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -39,7 +39,7 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  labelOrder.findById(req.params.orderNum, (err, data) => {
+  label_orders.findById(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -62,7 +62,7 @@ exports.update = (req, res) => {
     });
   }
   
-  labelOrder.updateById(
+  label_orders.updateById(
     req.params.orderNum,
     new label_orders(req.body),
     (err, data) => {
@@ -82,7 +82,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  labelOrder.remove(req.params.orderNum, (err, data) => {
+  label_orders.remove(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
