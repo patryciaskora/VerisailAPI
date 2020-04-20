@@ -38,6 +38,9 @@ require("./app/routes/label.route")(app);
 require("./app/routes/users.route")(app);
 require("./app/routes/event_insp_details.route")(app);
 require("./app/routes/parts.route")(app);
+require("./app/routes/label_history.route")(app);
+require("./app/routes/label_orders.route")(app);
+
 
 // set port, listen for requests
 app.listen(3000, () => {

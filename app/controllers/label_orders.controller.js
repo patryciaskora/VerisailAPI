@@ -28,7 +28,7 @@ exports.create = (req, res) => {
   });
   
   // Save label order in the database
-  label_orders.create(labelOrder, (err, data) => {
+  labelOrder.create(labelOrder, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -39,7 +39,7 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  label_orders.findById(req.params.orderNum, (err, data) => {
+  labelOrder.findById(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -62,7 +62,7 @@ exports.update = (req, res) => {
     });
   }
   
-  label_orders.updateById(
+  labelOrder.updateById(
     req.params.orderNum,
     new label_orders(req.body),
     (err, data) => {
@@ -82,7 +82,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  label_orders.remove(req.params.orderNum, (err, data) => {
+  labelOrder.remove(req.params.orderNum, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

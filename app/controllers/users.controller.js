@@ -23,6 +23,7 @@ exports.create = (req, res) => {
   const user = new User({
     username: req.body.username,
     password: req.body.password,
+    typeID: req.body.typeID
   });
   
   // Save User in the database
@@ -37,7 +38,7 @@ exports.create = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  User.findById(req.params.qrcode, (err, data) => {
+  User.findById(req.params.userID, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
