@@ -9,16 +9,7 @@ const User = function(user){
 }
 
 User.create = (newUser, result) => {
-  sql.query("INSERT INTO users SET ?", newUser, (err,res)=> {
-    if(err){
-      console.log("error: ", err);
-      result(err,null);
-      return;
-    }
-    console.log("created user: ", { id: res.insertId, ...newUser});
-    result(null, { id: res.insertId, ...newUser});
-  });
-  sql.query("call add_user", newUser.email, newUser.password, newUser.typeID, newUser.crossrefID, (err,res)=> {
+  sql.query("call add_user(?,?,?,?)", newUser.email, newUser.password, newUser.typeID, newUser.crossrefID, (err,res)=> {
     if(err){
       console.log("error: ", err);
       result(err,null);
