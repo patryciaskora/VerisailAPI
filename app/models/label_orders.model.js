@@ -4,7 +4,7 @@ const labelOrder = function(order){
     this.orderNum = order.orderNum
     this.QR_begin = order.QR_begin
     this.QR_end = order.QR_end
-    this.email = order.email
+    this.partName = order.partName
     this.label_quantity = order.label_quantity
 }
 
@@ -52,8 +52,8 @@ labelOrder.getAll = result => {
 
  labelOrder.updateById = (id, order, result) => {
     sql.query(
-      "UPDATE label_orders SET QR_begin = ?, QR_end = ?, email = ?, label_quantity = ? WHERE orderNum = ?",
-      [order.QR_begin, order.QR_end, order.email, order.label_quantity, id],
+      "UPDATE label_orders SET QR_begin = ?, QR_end = ?, partName = ?, label_quantity = ? WHERE orderNum = ?",
+      [order.QR_begin, order.QR_end, order.partName, order.label_quantity, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

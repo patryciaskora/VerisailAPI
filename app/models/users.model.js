@@ -5,6 +5,7 @@ const User = function(user){
     this.username = user.username
     this.password = user.password
     this.typeID = user.typeID
+    this.crossrefID = user.crossrefID
 }
 
 User.create = (newUser, result) => {
@@ -15,6 +16,15 @@ User.create = (newUser, result) => {
       return;
     }
     console.log("created user: ", { id: res.insertId, ...newUser});
+    result(null, { id: res.insertId, ...newUser});
+  });
+  sql.query("call add_user", newUser.email, newUser.password, newUser.typeID, newUser.crossrefID, (err,res)=> {
+    if(err){
+      console.log("error: ", err);
+      result(err,null);
+      return;
+    }
+    console.log("called add_user successfully.");
     result(null, { id: res.insertId, ...newUser});
   });
 };
@@ -51,8 +61,8 @@ User.getAll = result => {
 
  User.updateById = (id, user, result) => {
     sql.query(
-      "UPDATE users SET username = ?, password = ?, typeID = ? WHERE inspectionID = ?",
-      [user.username, user.password, user.typeID, id],
+      "UPDATE users SET username = ?, password = ?, typeID = ?, crossrefID = ? WHERE inspectionID = ?",
+      [user.username, user.password, user.typeID, user.crossrefID, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

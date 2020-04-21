@@ -23,11 +23,12 @@ exports.create = (req, res) => {
   const user = new User({
     username: req.body.username,
     password: req.body.password,
-    typeID: req.body.typeID
+    typeID: req.body.typeID,
+    crossrefID: req.body.crossrefID
   });
   
   // Save User in the database
-  User.create(boat, (err, data) => {
+  User.create(user, (err, data) => {
     if (err)
       res.status(500).send({
         message:
