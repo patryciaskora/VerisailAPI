@@ -9,7 +9,8 @@ const User = function(user){
 }
 
 User.create = (newUser, result) => {
-  sql.query("call add_user(?,?,?,?)", newUser.email, newUser.password, newUser.typeID, newUser.crossrefID, (err,res)=> {
+  sql.query("call add_user(?,?,?,?)", 
+  [newUser.username, newUser.password, newUser.typeID, newUser.crossrefID], (err,res)=> {
     if(err){
       console.log("error: ", err);
       result(err,null);
