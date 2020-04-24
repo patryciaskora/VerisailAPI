@@ -56,6 +56,22 @@ exports.findOne = (req, res) => {
   });
 };
 
+exports.findOneByName = (req, res) => {
+  Manufacturer.findByName(req.params.manuName, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Manufacturer with name ${req.params.manuName}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Manufacturer with name " + req.params.manuName
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {

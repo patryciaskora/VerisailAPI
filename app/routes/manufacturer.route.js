@@ -8,7 +8,10 @@ module.exports = app => {
     app.get("/manufacturers", manufacturer.findAll);
 
     // Retrieve a single Manufacturer with manufacturerID
-    app.get("/manufacturers/:manufacturerID", manufacturer.findOne);
+    app.get("/manufacturers_id/:manufacturerID", manufacturer.findOne);
+
+    // Retrieve a single Manufacturer with manuName
+    app.get("/manufacturers_name/:manuName", manufacturer.findOneByName);
 
     // Update a Manufacturer with manufacturerID
     app.put("/manufacturerupdate/:manufacturerID", manufacturer.update);
