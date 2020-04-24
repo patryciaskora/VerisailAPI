@@ -41,7 +41,7 @@ Manufacturer.findById = (manufacturerID, result) => {
 };
 
 Manufacturer.findByName = (manuName, result) => {
-  sql.query(`SELECT * FROM manufacturers WHERE manuName = ${manuName}`, (err, res) => {
+  sql.query(`SELECT * FROM manufacturers WHERE manuName = "${manuName}"`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
