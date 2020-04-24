@@ -25,7 +25,7 @@ exports.create = (req, res) => {
     boatID: req.body.boatID,
     insp_date: req.body.insp_date,
     insp_time: req.body.insp_time,
-    partStatus: req.body.partStatue,
+    partStatus: req.body.partStatus,
     qrDesc: req.body.qrDesc,
     qrCode: req.body.qrCode,
     insp_by: req.body.insp_by,

@@ -13,7 +13,7 @@ User.create = (newUser, result) => {
   [newUser.username, newUser.password, newUser.typeID, newUser.crossrefID], (err,res)=> {
     if(err){
       console.log("error: ", err);
-      result(err,null);
+      result(err,null); 
       return;
     }
     console.log("called add_user successfully.");
