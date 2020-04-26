@@ -8,11 +8,11 @@ module.exports = app => {
     app.get("/retailers", retailer.findAll);
 
     // Retrieve a single Retailer with retailID
-    app.get("/retailers/:retailerID", retailer.findOne);
+    app.get("/retailers/:retailID", retailer.findOne);
 
     // Update a Retailer with retailID
-    app.put("/retailerupdate/:retailerID", retailer.update);
+    app.put("/retailerupdate/:retailID", retailer.update);
 
     //Delete a Retailer with an ID
-    app.delete('/deleteretailer/:retailerID', retailer.delete);
+    app.delete('/deleteretailer/:retailID', retailer.delete);
 }
