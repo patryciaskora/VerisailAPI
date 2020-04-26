@@ -54,6 +54,22 @@ exports.findOne = (req, res) => {
   });
 };
 
+exports.userAuthentication = (req, res) => {
+  User.authentication(req.params.username, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with username ${req.params.username}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving user with username " + req.params.username
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {

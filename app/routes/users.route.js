@@ -13,6 +13,9 @@ module.exports = app => {
     // Update a User with userID
     app.put("/userupdate/:userID", user.update);
 
+    // Check for username in database
+    app.get("/user_authentication/:username", user.userAuthentication);
+
     //Delete a User with an ID
     app.delete('/deleteuser/:userID', user.delete);
 }
