@@ -40,7 +40,7 @@ User.findById = (userID, result) => {
 };
 
 User.authentication = (username, result) => {
-  sql.query(`SELECT userID FROM users WHERE username = ${username}`, (err, res) => {
+  sql.query(`SELECT userID FROM users WHERE username = "${username}"`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

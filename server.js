@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(function(req,res, next) {
-  var allowedOrigins = ['http://localhost:4200', 'http://ec2-3-89-226-21.compute-1.amazonaws.com'];
+  var allowedOrigins = ['http://localhost:4200', 'http://ec2-3-89-226-21.compute-1.amazonaws.com','http://verisail.csse-projects.monmouth.edu/'];
   var origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){
     res.setHeader('Access-Control-Allow-Origin', origin);
